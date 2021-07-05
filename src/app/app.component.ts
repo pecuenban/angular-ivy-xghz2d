@@ -67,4 +67,10 @@ export class AppComponent implements OnInit {
       console.log('Logged out :(');
     }
   }
+
+  itemValue = '';
+  onSubmit() {
+    this.db.list('messages').push({ content: this.itemValue });
+    this.itemValue = '';
+  }
 }
