@@ -1,18 +1,19 @@
-import { Component, VERSION } from '@angular/core';
+import { Component, OnInit, VERSION } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
   FirebaseuiAngularLibraryService,
   FirebaseUISignInFailure,
   FirebaseUISignInSuccessWithAuthResult
-} from 'firebaseui-angular';
-import * as firebase from 'firebase';
+} from 'firebaseui-angular-i18n';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   //ref = firebase.database().ref('messages/');
   name = 'Angular ' + VERSION.major;
 
@@ -27,11 +28,14 @@ export class AppComponent {
   uiShownCallback() {
     console.log('uiShownCallback');
   }
+  listado: Observable;
   user: any = null;
   constructor(
+    private db: AngularFireDatabase,
     private firebaseuiAngularLibraryService: FirebaseuiAngularLibraryService,
     private angularFireAuth: AngularFireAuth
   ) {
+    this.listado = db.list(this.path.messages).valueChanges;
     this.angularFireAuth.authState.subscribe(
       data => {
         // Success
@@ -46,6 +50,12 @@ export class AppComponent {
     console.log(this.angularFireAuth.authState);
     this.angularFireAuth.authState.subscribe(this.firebaseAuthChangeListener);
   }
+  reference: any;
+  path = {
+    messages: 'messages'
+  };
+
+  ngOnInit(): void {}
   logout() {
     this.angularFireAuth.signOut();
   }
