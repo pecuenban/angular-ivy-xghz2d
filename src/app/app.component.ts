@@ -28,14 +28,14 @@ export class AppComponent implements OnInit {
   uiShownCallback() {
     console.log('uiShownCallback');
   }
-  listado: Observable;
+  listado: Observable<any>;
   user: any = null;
   constructor(
     private db: AngularFireDatabase,
     private firebaseuiAngularLibraryService: FirebaseuiAngularLibraryService,
     private angularFireAuth: AngularFireAuth
   ) {
-    this.listado = db.list(this.path.messages).valueChanges;
+    this.listado = db.list(this.path.messages).valueChanges();
     this.angularFireAuth.authState.subscribe(
       data => {
         // Success
