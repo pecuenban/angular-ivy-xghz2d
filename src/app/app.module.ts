@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import {
-  ExtendedFirebaseUIAuthConfig,
+  FirebaseUIAuthConfig,
   firebase,
   firebaseui,
   FirebaseUIModule
-} from 'firebaseui-angular-i18n';
+} from 'firebaseui-angular';
 //import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
@@ -17,7 +17,7 @@ import {
   USE_EMULATOR as USE_AUTH_EMULATOR
 } from '@angular/fire/auth';
 
-const firebaseUiAuthConfig: ExtendedFirebaseUIAuthConfig = {
+const firebaseUiAuthConfig: FirebaseUIAuthConfig = {
   signInFlow: 'popup',
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -37,7 +37,7 @@ const firebaseUiAuthConfig: ExtendedFirebaseUIAuthConfig = {
     //firebase.auth.PhoneAuthProvider.PROVIDER_ID,
     //firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
   ],
-  language: 'IT',
+  //language: 'IT',
   tosUrl: '<your-tos-link>',
   privacyPolicyUrl: '<your-privacyPolicyUrl-link>',
   // Optional. Set it to override the default language (English)

@@ -4,7 +4,8 @@ import {
   FirebaseuiAngularLibraryService,
   FirebaseUISignInFailure,
   FirebaseUISignInSuccessWithAuthResult
-} from 'firebaseui-angular-i18n';
+} from 'firebaseui-angular';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'my-app',
@@ -12,6 +13,7 @@ import {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  //ref = firebase.database().ref('messages/');
   name = 'Angular ' + VERSION.major;
 
   successCallback(signInSuccessData: FirebaseUISignInSuccessWithAuthResult) {
