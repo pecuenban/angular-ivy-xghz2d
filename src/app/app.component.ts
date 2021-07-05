@@ -25,13 +25,23 @@ export class AppComponent {
   uiShownCallback() {
     console.log('uiShownCallback');
   }
-  loginStatus: boolean = false;
+  user: any = null;
   constructor(
     private firebaseuiAngularLibraryService: FirebaseuiAngularLibraryService,
     private angularFireAuth: AngularFireAuth
   ) {
-    console.log(this.angularFireAuth.authState);
+    this.angularFireAuth.authState.subscribe(
+      data => {
+        // Success
+        this.user = data;
+        console.log(data);
+      },
+      error => {
+        console.error(error);
+      }
+    );
     //firebaseuiAngularLibraryService.firebaseUiInstance.disableAutoSignIn();
+    console.log(this.angularFireAuth.authState);
     this.angularFireAuth.authState.subscribe(this.firebaseAuthChangeListener);
   }
   logout() {
@@ -40,10 +50,8 @@ export class AppComponent {
   firebaseAuthChangeListener(response) {
     // if needed, do a redirect in here
     if (response) {
-      this.loginStatus = true;
       //alert('Logged in :)');
     } else {
-      this.loginStatus = false;
       console.log('Logged out :(');
     }
   }

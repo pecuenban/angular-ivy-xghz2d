@@ -1,7 +1,4 @@
-<p>
-  Start editing to see some magic happen :){{loginStatus}}
-</p>
-<firebase-ui (signInSuccessWithAuthResult)="successCallback($event)"
-  (signInFailure)="errorCallback($event)" (uiShown)="uiShownCallback()"></firebase-ui>
-<button *ngIf="!loginStatus" (click)="logout()" class="firebaseui-idp-button mdl-button  mdl-button--raised"><span class="firebaseui-idp-text firebaseui-idp-text-long" style="color:#555">Cerrar sesion mal (solo prueba)</span></button>
-<button *ngIf="loginStatus" (click)="logout()" class="firebaseui-idp-button mdl-button  mdl-button--raised"><span class="firebaseui-idp-text firebaseui-idp-text-long" style="color:#555">Cerrar sesion</span></button>
+<ng-container *ngIf="user!=null">{{user|json}}</ng-container>
+<firebase-ui (signInSuccessWithAuthResult)="successCallback($event)" (signInFailure)="errorCallback($event)"
+  (uiShown)="uiShownCallback()"></firebase-ui>
+<button *ngIf="user!=null" (click)="logout()" class="firebaseui-idp-button mdl-button  mdl-button--raised"><span class="firebaseui-idp-text firebaseui-idp-text-long" style="color:#555">Cerrar sesion</span></button>

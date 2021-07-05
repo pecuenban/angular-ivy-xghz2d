@@ -17,17 +17,17 @@ import {
   USE_EMULATOR as USE_AUTH_EMULATOR
 } from '@angular/fire/auth';
 
-const firebaseUiAuthConfig: firebaseui.auth.Config = {
+const firebaseUiAuthConfig: ExtendedFirebaseUIAuthConfig = {
   signInFlow: 'popup',
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    {
+    /*{
       scopes: ['public_profile', 'email', 'user_likes', 'user_friends'],
       customParameters: {
         auth_type: 'reauthenticate'
       },
       provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID
-    },
+    },*/
     //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
     firebase.auth.GithubAuthProvider.PROVIDER_ID,
     {
@@ -37,10 +37,10 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     //firebase.auth.PhoneAuthProvider.PROVIDER_ID,
     //firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
   ],
+  language: 'IT',
   tosUrl: '<your-tos-link>',
   privacyPolicyUrl: '<your-privacyPolicyUrl-link>',
   // Optional. Set it to override the default language (English)
-  language: 'es',
   credentialHelper: firebaseui.auth.CredentialHelper.GOOGLE_YOLO
 };
 
