@@ -2,7 +2,7 @@
 <firebase-ui (signInSuccessWithAuthResult)="successCallback($event)" (signInFailure)="errorCallback($event)"
   (uiShown)="uiShownCallback()"></firebase-ui>
 <button *ngIf="user!=null" (click)="logout()" class="firebaseui-idp-button mdl-button  mdl-button--raised"><span class="firebaseui-idp-text firebaseui-idp-text-long" style="color:#555">Cerrar sesion</span></button>
-{{listado |json}}
+
 <pre *ngFor="let item of listado | async">{{item.content}}</pre>
 
 <form (ngSubmit)="onSubmit()">

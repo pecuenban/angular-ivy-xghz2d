@@ -5,7 +5,7 @@ import {
   FirebaseUISignInFailure,
   FirebaseUISignInSuccessWithAuthResult
 } from 'firebaseui-angular-i18n';
-import { AngularFireDatabase } from '@angular/fire/database';
+//import { AngularFireStore } from '@angular/fire/store';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -31,11 +31,12 @@ export class AppComponent implements OnInit {
   listado: Observable<any>;
   user: any = null;
   constructor(
-    private db: AngularFireDatabase,
+    // private db: AngularFireStore,
     private firebaseuiAngularLibraryService: FirebaseuiAngularLibraryService,
     private angularFireAuth: AngularFireAuth
   ) {
-    this.listado = db.list(this.path.messages).valueChanges();
+    //  this.listado = db.doc(this.path.messages);
+    //this.listado = db.list(this.path.messages).valueChanges();
     this.angularFireAuth.authState.subscribe(
       data => {
         // Success
@@ -70,7 +71,7 @@ export class AppComponent implements OnInit {
 
   itemValue = '';
   onSubmit() {
-    this.db.list('messages').push({ content: this.itemValue });
+    // this.db.list('messages').push({ content: this.itemValue });
     this.itemValue = '';
   }
 }

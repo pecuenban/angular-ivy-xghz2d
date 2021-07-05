@@ -17,6 +17,7 @@ import {
   AngularFireAuthModule,
   USE_EMULATOR as USE_AUTH_EMULATOR
 } from '@angular/fire/auth';
+//import { AngularFireStoreModule } from '@angular/fire/store';
 
 const firebaseUiAuthConfig: ExtendedFirebaseUIAuthConfig = {
   signInFlow: 'popup',
@@ -50,6 +51,7 @@ const firebaseUiAuthConfig: ExtendedFirebaseUIAuthConfig = {
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
+    //AngularFireStoreModule,
     FormsModule,
     //AppRoutingModule,
     //AngularFireModule.initializeApp(environment.firebaseConfig),
