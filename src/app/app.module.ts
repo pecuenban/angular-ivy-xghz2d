@@ -2,7 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { firebase, firebaseui, FirebaseUIModule } from 'firebaseui-angular';
+import {
+  ExtendedFirebaseUIAuthConfig,
+  firebase,
+  firebaseui,
+  FirebaseUIModule
+} from 'firebaseui-angular-i18n';
 //import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
@@ -34,6 +39,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
   ],
   tosUrl: '<your-tos-link>',
   privacyPolicyUrl: '<your-privacyPolicyUrl-link>',
+  // Optional. Set it to override the default language (English)
+  language: 'es',
   credentialHelper: firebaseui.auth.CredentialHelper.GOOGLE_YOLO
 };
 

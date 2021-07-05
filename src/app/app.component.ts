@@ -4,7 +4,7 @@ import {
   FirebaseuiAngularLibraryService,
   FirebaseUISignInFailure,
   FirebaseUISignInSuccessWithAuthResult
-} from 'firebaseui-angular';
+} from 'firebaseui-angular-i18n';
 
 @Component({
   selector: 'my-app',
